@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Schedule Creator</title>
+    <link rel="stylesheet" href="index.css">
+</head>
+
+<body>
+    <div id="root">
+        <canvas id="canvas-editor" class="canvas"></canvas>
+        <canvas id="canvas-export" class="canvas" style="margin: 10px;"></canvas>
+        <canvas id="canvas-background" class="canvas ground"></canvas>
+        <canvas id="canvas-foreground" class="canvas ground"></canvas>
+
+        <input id="file-browser" class="root-child" type="file" accept="image/*">
+        <button id="export-button" class="root-child">Export</button>
+        <button id="reset-button" class="root-child">Reset Thumbnail</button>
+
+        <div id="rotate-box" class="root-child">
+            <div id="scale-box">
+                <div id="move-box">
+                    <canvas id="canvas-thumbnail"></canvas>
+                </div>
+            </div>
+        </div>
+
+        <div id="simulated-box" class="root-child" style="visibility: hidden;"></div>
+    </div>
+
+    <script src="js/properties.js"></script>
+    <script src="js/functions.js"></script>
+    <script src="js/weekday.js"></script>
+    <script src="js/transformTool.js"></script>
+    <script src="js/elements.js"></script>
+    <script src="js/index.js"></script>
+</body>
+</html>

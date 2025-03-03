@@ -1,0 +1,85 @@
+body {
+    width: 100vw;
+    height: 100vh;
+    margin: 0px;
+    padding: 0px;
+    font-family: Arial, sans-serif; /* Set default font for the page */
+    background-color: #2b6bcb; /* Set background color */
+    color: #0d0c0c; /* Set default text color */
+}
+
+#canvas-editor {
+    margin: 0px;
+    padding: 0px;
+    background-color: rgb(26, 24, 24);
+}
+
+.ground {
+    top: 0px;
+    left: 0px;
+    margin: 10px;
+    outline: 1px solid red;
+}
+
+.canvas {
+    position: absolute;
+    display:block;
+    pointer-events: none;
+}
+
+.root-child {
+    position: absolute;
+    display:block;
+}
+
+/* ////////////////////////////////////////////////////////////////////////////////////////// */
+
+#move-box {
+    transform-origin: center;
+    pointer-events: auto;
+    cursor: move;
+    padding: 0px;
+    line-height: 0px;
+    
+    /* border: 2px dashed rgb(0, 0, 0); */
+    outline: 2px dashed rgb(255, 255, 255);
+}
+
+#scale-box {
+    transform-origin: center;
+    pointer-events: auto;
+    cursor: nw-resize;
+    padding: 15px;
+    line-height: 0px;
+    /* outline: 2px solid rgb(0, 68, 255); */
+}
+
+#rotate-box {
+    transform-origin: center;
+    pointer-events: auto;
+    cursor:grab;
+    padding: 40px;
+    line-height: 0px;
+    /* outline: 2px solid rgb(255, 0, 0); */
+}
+
+/* ////////////////////////////////////////////////////////////////////////////////////////// */
+
+@font-face {
+    font-family: 'scriptFont';
+    src: url('NanumBrushScript-Regular.ttf') format('opentype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+.inputText {
+    background-color: transparent;
+    border-width: 2px;
+    border-block-color: rgb(0, 0, 0 / 50%);
+    border-inline-color: rgb(0, 0, 0 / 50%);
+    padding: 0px;
+    margin: 0px;
+    resize: none;
+    position: absolute;
+    transform: scale(1.0);
+}
