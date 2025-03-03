@@ -5,8 +5,22 @@ const wednesday = new WeekDay(1001, 475, "Wednesday");
 const thursday = new WeekDay(1001, 618, "Thursday");
 const friday = new WeekDay(1001, 761, "Friday");
 const saturday = new WeekDay(1001, 904, "Saturday");
-
 const week = [sunday, monday, tuesday, wednesday, thursday, friday, saturday];
+
+// Get the DPR and size of the canvas
+const dpr = window.devicePixelRatio;
+const canvasRect = exportCanvas.element.getBoundingClientRect();
+
+// Set the actual(?) size of the canvas
+exportCanvas.element.width = bgWidth * dpr;
+exportCanvas.element.height = bgHeight * dpr;
+
+// Resolution/quality
+exportCanvas.ctx.scale(dpr, dpr);
+
+// Outline of the canvas
+exportCanvas.element.style.width = `${bgWidth}px`; // canvasRect.width
+exportCanvas.element.style.height = `${bgHeight}px`;
 
 loadAssets();
 document.addEventListener("onAssetsLoaded", () => {
