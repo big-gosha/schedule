@@ -79,9 +79,9 @@ async function loadAssets() {
         });
     }
 
-    await loadImage(weekdayBgImage, 'Box_online.png');
-    await loadImage(bgLeftImage, 'BG_Left.png');
-    await loadImage(bgRightImage, 'BG_Right.png');
+    await loadImage(weekdayBgImage, 'assets/Box_online.png');
+    await loadImage(bgLeftImage, 'assets/BG_Left.png');
+    await loadImage(bgRightImage, 'assets/BG_Right.png');
     document.dispatchEvent(onAssetsLoaded);
 }
 
