@@ -6,9 +6,9 @@ const backgroundCanvas = new Canvas('canvas-background', bgWidth, bgHeight);
 const foregroundCanvas = new Canvas('canvas-foreground', bgWidth, bgHeight);
 
 // Images
-const bgLeftImage = new Image();    bgLeftImage.src = 'BG_Left.png';
-const bgRightImage = new Image();   bgRightImage.src = 'BG_Right.png';
-const weekdayBgImage = new Image(); weekdayBgImage.src = 'Box_online.png';
+const bgLeftImage = new Image();    bgLeftImage.src = 'assets/BG_Left.png';
+const bgRightImage = new Image();   bgRightImage.src = 'assets/BG_Right.png';
+const weekdayBgImage = new Image(); weekdayBgImage.src = 'assets/Box_online.png';
 
 // File Browser
 const fileBrowser = document.getElementById('file-browser');
@@ -18,10 +18,9 @@ fileBrowser.addEventListener("change", function(event) {
     if (!file) return;
 
     reader.onload = function(e) {
-        thumbnail.isLoaded = true;
         thumbnail.image.onload = () => {
+            thumbnail.isLoaded = true;
             thumbnail.reset(); 
-            //drawThumbnail();
             drawCanvasGlobal();
         }
         thumbnail.image.src = e.target.result;
@@ -33,42 +32,17 @@ fileBrowser.addEventListener("change", function(event) {
 const exportButton = document.getElementById('export-button');
 exportButton.addEventListener("click", function() {
 
-    thumbnail.canvas.ctx.drawImage(thumbnail.image, 
-        0,
-        0,
-        512,
-        512);
+    // Say 'cheese' for the picture
+    week.forEach((day,i) => {
+        day.switchHtml(exportCanvas.ctx)
+    });
 
-    let imageData = thumbnail.canvas.ctx.getImageData(0, 0, 512, 512);
-    let data = imageData.data; // RGBA array
-
-    for (let i = 0; i < data.length; i += 4) {
-        let threshold = 240;
-        let firstDiff = data[i+0] - threshold;
-        let secondDiff = data[i+1] - threshold;
-        let thirdDiff = data[i+2] - threshold;
-
-        if (firstDiff >= 0 && secondDiff >= 0 && thirdDiff >= 0) {
-            data[i + 3] = 0;
-        }
-    }
-
-    // for (let i = 0; i < data.length; i += 4) {
-    //     if (data[i] === 255 && data[i + 1] === 255 && data[i + 2] === 255) {
-    //         data[i + 3] = 0; // Fully transparent
-    //     }
-    // }
-
-    thumbnail.canvas.ctx.putImageData(imageData, 0, 0);
-    
-    // week.forEach((day,i) => {
-    //     day.switchHtml(exportCanvas.ctx)
-    // });
-
-    // const link = document.createElement("a");
-    // link.download = "canvas-image.png";
-    // link.href = exportCanvas.toDataURL("image/jpeg", 0.5);
-    // link.click();
+    setTimeout(() => {
+        const link = document.createElement("a");
+        link.download = "canvas-image.png";
+        link.href = exportCanvas.element.toDataURL("image/jpeg", 0.5);
+        link.click();
+    }, 300);
 
     // let scaleFactor = 2;
     // exported.element.width = 1920 * scaleFactor;
