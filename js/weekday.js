@@ -10,7 +10,7 @@ class WeekDay {
         this.name = name;
         this.hours = 22;
         this.enabled = false;
-        this.initialized = false;
+        //this.initialized = false;
 
         this.root = document.createElement("div");
         this.root.id = name;
@@ -36,8 +36,40 @@ class WeekDay {
         this.cetTime = "08:00 PM";
         this.jstTime = "04:00 PM";
         
-        this.createElements();
-        // this.draw();
+        // this.createElements();
+        // HTML elements
+        this.timeInput.type = "time";
+        this.timeInput.style.backgroundColor = "transparent";
+        this.timeInput.value = `${this.hours}:00`;
+        this.timeInput.style.padding = "0px";
+        this.timeInput.style.margin = "0px";
+        this.timeInput.style.color = "#4b4c51";
+        this.timeInput.style.font = "bold 12px Calibri";
+        addToRoot(this.timeInput, this.xBox-100, this.yPosition+50, `time-${this.name}`, this.root);
+        this.timeInput.addEventListener("input", () => {
+            const date = new Date();
+            const [newHours, minutes] = this.timeInput.value.split(":").map(Number);
+            this.hours = newHours;
+            drawCanvasGlobal();
+        },false,);
+
+        this.checkbox = document.createElement("input");
+        this.checkbox.type = "checkbox";
+        addToRoot(this.checkbox, this.xPosition+75, this.yPosition+35, `checkbox-${this.name}`, this.root);
+        this.checkbox.addEventListener("change", () => {
+            this.enabled = this.checkbox.checked;
+            drawCanvasGlobal();
+        });
+
+        this.titleInput = document.createElement("textarea");
+        createInputField(this.titleInput, "bold 14px Calibri", "#4b4c51", "280px", "15px", "Title");
+        addToRoot(this.titleInput, this.xPosition+130, this.yPosition+50, `title-${this.name}`, this.root);
+
+        this.descInput = document.createElement("textarea");
+        createInputField(this.descInput, "12px scriptFont", "#4b4c51", "280px", "30px", "Description");
+        addToRoot(this.descInput, this.xPosition+130, this.yPosition+80, `desc-${this.name}`, this.root);
+
+        //this.initialized = true;
     }
 
     // Draw Schedule Day
@@ -97,39 +129,6 @@ class WeekDay {
             return;
         }
 
-        this.timeInput.type = "time";
-        this.timeInput.style.backgroundColor = "transparent";
-        this.timeInput.value = `${this.hours}:00`;
-        this.timeInput.style.padding = "0px";
-        this.timeInput.style.margin = "0px";
-        this.timeInput.style.color = "#4b4c51";
-        this.timeInput.style.font = "bold 12px Calibri";
-        addToRoot(this.timeInput, this.xBox-100, this.yPosition+50, `time-${this.name}`, this.root);
-        this.timeInput.addEventListener("input", () => {
-            const date = new Date();
-            const [newHours, minutes] = this.timeInput.value.split(":").map(Number);
-            this.hours = newHours;
-            // this.redraw();
-            drawCanvasGlobal();
-        },false,);
 
-        this.checkbox = document.createElement("input");
-        this.checkbox.type = "checkbox";
-        addToRoot(this.checkbox, this.xPosition+75, this.yPosition+35, `checkbox-${this.name}`, this.root);
-        this.checkbox.addEventListener("change", () => {
-            this.enabled = this.checkbox.checked;
-            // this.redraw();
-            drawCanvasGlobal();
-        });
-
-        this.titleInput = document.createElement("textarea");
-        createInputField(this.titleInput, "bold 14px Calibri", "#4b4c51", "280px", "15px", "Title");
-        addToRoot(this.titleInput, this.xPosition+130, this.yPosition+50, `title-${this.name}`, this.root);
-
-        this.descInput = document.createElement("textarea");
-        createInputField(this.descInput, "12px scriptFont", "#4b4c51", "280px", "30px", "Description");
-        addToRoot(this.descInput, this.xPosition+130, this.yPosition+80, `desc-${this.name}`, this.root);
-
-        this.initialized = true;
     }
 }
