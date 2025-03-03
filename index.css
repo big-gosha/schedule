@@ -3,9 +3,9 @@ body {
     height: 100vh;
     margin: 0px;
     padding: 0px;
-    font-family: Arial, sans-serif; /* Set default font for the page */
-    background-color: #2b6bcb; /* Set background color */
-    color: #0d0c0c; /* Set default text color */
+    font-family: Arial, sans-serif;
+    background-color: #2b6bcb;
+    color: #0d0c0c;
 }
 
 #canvas-editor {
@@ -67,7 +67,7 @@ body {
 
 @font-face {
     font-family: 'scriptFont';
-    src: url('NanumBrushScript-Regular.ttf') format('opentype');
+    src: url('assets/NanumBrushScript-Regular.ttf') format('opentype');
     font-weight: normal;
     font-style: normal;
 }
