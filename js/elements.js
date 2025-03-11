@@ -22,8 +22,8 @@ exportButton.addEventListener("click", async function() {
     await delay(200);
 
     let tempCanvas = document.createElement('canvas');
-    tempCanvas.width = 1920;
-    tempCanvas.height = 1080;
+    let ctx = tempCanvas.getContext("2d");
+    tempCanvas.width = 1920; tempCanvas.height = 1080;
     tempCanvas.drawImage(exportCanvas.element, 0, 0, 1920, 1080);
 
     await delay(500);
