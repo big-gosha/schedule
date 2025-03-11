@@ -4,56 +4,56 @@ class Canvas {
         this.element = document.getElementById(id);
         this.ctx = this.element.getContext("2d");
 
-        if (width == 0 || height == 0){}
-        else{
-            this.element.width = width;
-            this.element.height = height;
-        }
+        // if (width == 0 || height == 0){}
+        // else{
+        //     this.element.width = width;
+        //     this.element.height = height;
+        // }
+    }
+}
+
+// Class Transform
+class Transform{
+    constructor(){
+        this.positionX = 0;
+        this.positionY = 0;
+        this.scaleX = 1;
+        this.scaleY = 1;
+        this.width = 200;
+        this.height = 200;
+        this.angle = 0;
+    }
+
+    copyFrom (from){
+        this.positionX = from.positionX;
+        this.positionY = from.positionY;
+        this.scaleX = from.scaleX;
+        this.scaleY = from.scaleY;
+        this.width = from.width;
+        this.height = from.height;
+        this.angle = from.angle;
+    }
+
+    reset(){
+        this.positionX = 0;
+        this.positionY = 0;
+        this.scaleX = 1;
+        this.scaleY = 1;
+        this.width = 200;
+        this.height = 200;
+        this.angle = 0;
     }
 }
 
 // Size
 const screenWidth = window.innerWidth;
 const screenHeight = window.innerHeight;
+// const bgHeight = 1080 * 0.95;
+// const bgWidth = bgHeight * 1.77777777777;
 const bgHeight = screenHeight * 0.95;
 const bgWidth = bgHeight * 1.77777777777;
 const hDpi = bgHeight / 1080;
 const wDpi = bgWidth / 1920;
-
-// Thumbnail Transform
-var thumbnail = {
-    isLoaded: false,
-    transform: {
-        positionX: 0,
-        positionY: 0,
-        scaleX: 1,
-        scaleY: 1,
-        angle: 0,
-    },
-    image: new Image(),
-    canvas: new Canvas('canvas-thumbnail', 200, 200),
-    update: function() {
-        let width = this.isLoaded ? this.image.width : 200;
-        let height = this.isLoaded ? this.image.height : 200;
-
-        this.canvas.element.width = width * this.transform.scaleX;
-        this.canvas.element.height = height * this.transform.scaleY;
-
-        let offsetX = this.transform.positionX+57;
-        let offsetY = this.transform.positionY+57;
-        
-        rotateBox.style.transform = 
-            `translate(${this.transform.positionX}px, ${this.transform.positionY}px) rotate(${this.transform.angle}deg)`;
-    },
-    reset: function() {
-        this.transform.positionX = 0;
-        this.transform.positionY = 0;
-        this.transform.scaleX = 1;
-        this.transform.scaleY = 1;
-        this.transform.angle = 0;
-        this.update();
-    },
-}
 
 // Current Week String
 const nowDate = new Date();
@@ -80,8 +80,40 @@ async function loadAssets() {
     }
 
     await loadImage(weekdayBgImage, 'assets/Box_online.png');
-    await loadImage(bgLeftImage, 'assets/BG_Left.png');
-    await loadImage(bgRightImage, 'assets/BG_Right.png');
+    await loadImage(bgImage, 'assets/BG.png');
     document.dispatchEvent(onAssetsLoaded);
 }
 
+// Proxy Text
+class ProxyText{
+    constructor(font = 'Arial', fontColor = 'red', boxWidth = '200', boxHeight = '15', xPos, yPos, placeholderText, id) {
+        this.element = document.createElement("textarea");
+        this.element.classList.add('inputText', 'root-child');
+        this.element.style.font = font;
+        this.element.style.color = fontColor;
+        this.element.placeholder = placeholderText;
+        this.element.id = id;
+
+        //newRoot.appendChild(element);
+        this.element.style.top = `${yAdj(yPos)}px`;
+        this.element.style.left = `${xAdj(xPos)}px`;
+        this.element.style.width = boxWidth;
+        this.element.style.height = boxHeight;
+    }
+
+    drawAsHtml (){
+        this.element.visibility = 'visible';
+    }
+
+    drawAsCanvas (ctx){
+        this.element.visibility = 'hidden';
+        drawText(this.element.font, 
+            this.element.color, 
+            this.element.style.left, 
+            this.element.style.top, 
+            this.element.style.textAlign, 
+            this.element.style.verticalAlign, 
+            this.element.value,
+            ctx);
+    }
+}
