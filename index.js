@@ -1,6 +1,9 @@
 const date = new Date();
 var week, sunday, monday, tuesday, wednesday, thursday, friday, saturday = 0;
 
+const artistName = new ProxyText('bold 10px Calibri', '#fffaec', 150, 10, 200, 1026, 'twitter', 'art-name-text');
+root.appendChild(artistName.element);
+
 // Canvas how it should be displayed in a 4k monitor (is half the size of screen)
 // resizeCanvas(1920, 1080, bgWidth, bgHeight, 1.0);
 
@@ -63,8 +66,6 @@ document.addEventListener("onAssetsLoaded", () => {
         saturday.imageGetter];
 
     drawCanvasGlobal();
-    const artistName = new ProxyText('bold 10px Calibri', '#fffaec', 150, 10, 200, 1026, 'twitter', 'art-name-text');
-    root.appendChild(artistName.element);
 });
 
 function drawCanvasGlobal(){
