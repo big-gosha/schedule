@@ -88,15 +88,15 @@ class WeekDay {
             this.titleInput.style.visibility = "hidden";
             this.descInput.style.visibility = "hidden";
             this.imageGetter.root.style.visibility = "hidden";
-            console.log('draw() -> drawing as canvas');
 
-            let ctx = exportCanvas.ctx;
-            drawText("bold 12px Calibri", "#4b4c51", this.xBox-114, this.yPosition+50, 'left', 'middle', this.estTime, ctx);
-            drawText("bold 14px Calibri", "#4b4c51", this.xPosition+120-10, this.yPosition+50, 'left', 'middle', this.titleInput.value, ctx);
-            drawText("12px scriptFont", "#4b4c51", this.xPosition+120-10, this.yPosition+80, 'left', 'middle', this.descInput.value, ctx);
+            if (this.enabled) {
+                let ctx = exportCanvas.ctx;
+                drawText("bold 12px Calibri", "#4b4c51", this.xBox-114, this.yPosition+50, 'left', 'middle', this.estTime, ctx);
+                drawText("bold 14px Calibri", "#4b4c51", this.xPosition+120-10, this.yPosition+50, 'left', 'middle', this.titleInput.value, ctx);
+                drawText("12px scriptFont", "#4b4c51", this.xPosition+120-10, this.yPosition+80, 'left', 'middle', this.descInput.value, ctx);    
+            }
         }
         else{
-            console.log('draw() -> drawing as html');
             this.timeInput.style.visibility = this.enabled ? "visible" : "hidden";
             this.titleInput.style.visibility = this.enabled ? "visible" : "hidden";
             this.descInput.style.visibility = this.enabled ? "visible" : "hidden";
