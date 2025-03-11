@@ -11,22 +11,30 @@
 
 <body>
     <div id="root">
-        <canvas id="canvas-editor" class="canvas"></canvas>
-        <canvas id="canvas-export" class="canvas" style="margin: 10px;"></canvas>
-        <canvas id="canvas-background" class="canvas ground"></canvas>
-        <canvas id="canvas-foreground" class="canvas ground"></canvas>
+        <canvas id="canvas-export" class="canvas"></canvas>
 
-        <input id="file-browser" class="root-child" type="file" accept="image/*">
+        <div id="thumbnail-prompt" class="root-child" style="top: 300px;left: 250px;text-align: left;line-height: 1.5rem;visibility: collapse;">
+            <label for="file-browser" style="padding: 3px 6px;">Browse</label> for an image
+            <br>&nbsp;&nbsp;or
+            <br>
+            <button id="paste-button" style="padding: 3px 6px;">Paste</button> an image
+            <input id="file-browser" style="visibility: collapse;" type="file" accept="image/*">
+        </div>
+        
         <button id="export-button" class="root-child">Export</button>
-        <button id="reset-button" class="root-child">Reset Thumbnail</button>
 
-        <div id="rotate-box" class="root-child">
-            <div id="scale-box">
-                <div id="move-box">
-                    <canvas id="canvas-thumbnail"></canvas>
+        <div id="transform-tool" class="root-child">
+            <button id="cancel-transform" class="mini-button" style="background-color: red;top: 30px;left: 30px;">x</button>
+            <button id="confirm-transform" class="mini-button" style="background-color: green;top: 30px;left: 50px;">o</button>
+            <div id="rotate-box">
+                <div id="scale-box">
+                    <div id="move-box">
+                        <canvas id="canvas-thumbnail"></canvas>
+                    </div>
                 </div>
             </div>
         </div>
+        
     </div>
 
     <script src="js/properties.js"></script>
@@ -34,6 +42,7 @@
     <script src="js/weekday.js"></script>
     <script src="js/transformTool.js"></script>
     <script src="js/elements.js"></script>
+    <script src="js/imageGetter.js"></script>
     <script src="index.js"></script>
 </body>
 </html>
