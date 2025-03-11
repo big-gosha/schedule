@@ -24,7 +24,7 @@ exportButton.addEventListener("click", async function() {
 
     const link = document.createElement("a");
     link.download = "canvas-image.png";
-    link.href = exportCanvas.element.toDataURL("image/png");
+    link.href = exportCanvas.element.toDataURL("image/jpeg", 1.0);
     link.click();
 
     await delay(300);
