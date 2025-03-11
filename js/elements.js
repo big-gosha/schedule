@@ -19,6 +19,7 @@ exportButton.addEventListener("click", async function() {
         day.setDrawAsCanvas(true)
     });
 
+    drawCanvasGlobal();
     await delay(200);
 
     let tempCanvas = document.createElement('canvas');
@@ -34,6 +35,7 @@ exportButton.addEventListener("click", async function() {
     link.click();
 
     await delay(300);
+    drawCanvasGlobal();
 
     week.forEach((day,i) => {
         day.setDrawAsCanvas(false)
