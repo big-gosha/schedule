@@ -15,6 +15,8 @@ const weekdayBgImage = new Image(); weekdayBgImage.src = 'assets/Box_online.png'
 // Export Button
 const exportButton = document.getElementById('export-button');
 exportButton.addEventListener("click", async function() {
+
+    artistName.drawAsCanvas(exportCanvas.ctx);
     week.forEach((day,i) => {
         day.setDrawAsCanvas(true)
     });
@@ -37,6 +39,7 @@ exportButton.addEventListener("click", async function() {
     await delay(300);
     drawCanvasGlobal();
 
+    artistName.drawAsHtml();
     week.forEach((day,i) => {
         day.setDrawAsCanvas(false)
     });
