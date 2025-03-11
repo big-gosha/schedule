@@ -15,16 +15,22 @@ const weekdayBgImage = new Image(); weekdayBgImage.src = 'assets/Box_online.png'
 // Export Button
 const exportButton = document.getElementById('export-button');
 exportButton.addEventListener("click", async function() {
-    // Say 'cheese' for the picture
     week.forEach((day,i) => {
         day.setDrawAsCanvas(true)
     });
 
-    await delay(700);
+    await delay(200);
+
+    let tempCanvas = document.createElement('canvas');
+    tempCanvas.width = 1920;
+    tempCanvas.height = 1080;
+    tempCanvas.drawImage(exportCanvas.element, 0, 0, 1920, 1080);
+
+    await delay(500);
 
     const link = document.createElement("a");
     link.download = "canvas-image.png";
-    link.href = exportCanvas.element.toDataURL("image/jpeg", 1.0);
+    link.href = tempCanvas.toDataURL("image/png");
     link.click();
 
     await delay(300);
@@ -33,6 +39,7 @@ exportButton.addEventListener("click", async function() {
         day.setDrawAsCanvas(false)
     });
 
+    // link.href = exportCanvas.element.toDataURL("image/png");
     // let scaleFactor = 2;
     // exported.element.width = 1920 * scaleFactor;
     // exported.element.height = 1080 * scaleFactor;
