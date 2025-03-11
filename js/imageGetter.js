@@ -25,7 +25,6 @@ class ImageGetter {
         this.imagePickerDiv.style.textAlign = 'left';
         this.imagePickerDiv.style.lineHeight = '1.5rem';
         this.imagePickerDiv.style.textShadow = '1px 1px 1px black'; /* offset-x | offset-y | blur-radius | color */
-        // addToRoot(this.imagePickerDiv, this.xBox+25, this.yPosition+40, `${this.name}-image-picker`, root);
         addToRoot(this.imagePickerDiv, this.xPos, this.yPos, `${this.name}-image-picker`, this.root);
         
         this.fileBrowserLabel = document.createElement('label');
@@ -70,13 +69,6 @@ class ImageGetter {
                     transformTool.show(getter);
                     getter.editButton.style.visibility = 'hidden';
                     getter.imagePickerDiv.style.visibility = 'hidden';
-
-                    // send this image to transformTool
-                    // hide 'file-browser'
-                    // show 'edit button'
-                    // logic to draw this image on canvasGlobal
-
-                    // this.resetMatrix();
                     drawCanvasGlobal();
                 }
                 getter.image.src = e.target.result;
