@@ -1,27 +1,28 @@
+html{
+    font-size: 12px;
+}
+
 body {
     width: 100vw;
     height: 100vh;
     margin: 0px;
     padding: 0px;
-    font-family: Arial, sans-serif;
-    background-color: #2b6bcb;
-    color: #0d0c0c;
+    font-family: Verdana, sans-serif;
+    background-color: #1a171a;
+    color: #e5e5e1;
 }
 
-#canvas-editor {
-    margin: 0px;
-    padding: 0px;
-    background-color: rgb(26, 24, 24);
-}
+/* background-color: #1a171a; */
+/* hsl(300, 10, 10) */
 
-.ground {
+/* f4f4f2 */
+
+.canvas {
     top: 0px;
     left: 0px;
     margin: 10px;
     outline: 1px solid red;
-}
 
-.canvas {
     position: absolute;
     display:block;
     pointer-events: none;
@@ -34,6 +35,25 @@ body {
 
 /* ////////////////////////////////////////////////////////////////////////////////////////// */
 
+.mini-button{
+    /* background-color: red; */
+    /* margin: 0px; */
+    /* outline: 0px; */
+    /* border: 0px; */
+    padding: 1px 4px 3px 4px; /* top right bottom left */
+    line-height: 1.0rem;
+    text-align: center;
+    align-content: center;
+    position: absolute;
+    /* align-items:end; */
+    /* font-size: 12px; */
+    vertical-align: middle;
+    z-index: 10;
+    /* display: block; */
+    pointer-events: auto;
+    cursor: default;
+}
+
 #move-box {
     transform-origin: center;
     pointer-events: auto;
@@ -42,7 +62,8 @@ body {
     line-height: 0px;
     
     /* border: 2px dashed rgb(0, 0, 0); */
-    outline: 2px dashed rgb(255, 255, 255);
+    /* outline: 2px dashed rgb(255, 255, 255); */
+    animation: dashAnimation 3s ease infinite;
 }
 
 #scale-box {
@@ -65,6 +86,36 @@ body {
 
 /* ////////////////////////////////////////////////////////////////////////////////////////// */
 
+@keyframes dashAnimation {
+    0% {
+        outline: 2px dashed white;
+    }
+    50%{
+        outline: 2px dashed rgb(52, 52, 52);
+    }
+    100% {
+        outline: 2px dashed white;
+    }
+}
+
+label, button{
+    border: 1px solid #939293;
+    padding: 4px 8px;
+    border-radius: 3px;
+    background-color: #312e33;
+    color: #b3afb3;
+}
+
+label:hover, button:hover{
+    background-color: #413e42;
+    color: #ccc8c8;
+}
+
+label:active, button:active{
+    background-color: #4d484f;
+    color: #e5e5e1;
+}
+
 @font-face {
     font-family: 'scriptFont';
     src: url('assets/NanumBrushScript-Regular.ttf') format('opentype');
@@ -73,13 +124,12 @@ body {
 }
 
 .inputText {
+    text-align: left;
+    vertical-align: middle;
     background-color: transparent;
-    border-width: 2px;
-    border-block-color: rgb(0, 0, 0 / 50%);
-    border-inline-color: rgb(0, 0, 0 / 50%);
+    border-width: 1px;
     padding: 0px;
     margin: 0px;
     resize: none;
     position: absolute;
-    transform: scale(1.0);
 }
