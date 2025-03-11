@@ -11,16 +11,7 @@
 
 <body>
     <div id="root">
-        <canvas id="canvas-export" class="canvas"></canvas>
-
-        <div id="thumbnail-prompt" class="root-child" style="top: 300px;left: 250px;text-align: left;line-height: 1.5rem;visibility: collapse;">
-            <label for="file-browser" style="padding: 3px 6px;">Browse</label> for an image
-            <br>&nbsp;&nbsp;or
-            <br>
-            <button id="paste-button" style="padding: 3px 6px;">Paste</button> an image
-            <input id="file-browser" style="visibility: collapse;" type="file" accept="image/*">
-        </div>
-        
+        <canvas id="canvas-export" class="canvas"></canvas>    
         <button id="export-button" class="root-child">Export</button>
 
         <div id="transform-tool" class="root-child">
@@ -34,7 +25,6 @@
                 </div>
             </div>
         </div>
-        
     </div>
 
     <script src="js/properties.js"></script>
