@@ -21,6 +21,7 @@ exportButton.addEventListener("click", async function() {
         day.setDrawAsCanvas(true)
     });
 
+    console.log('Drawing everything in the export canvas');
     drawCanvasGlobal();
     await delay(200);
 
@@ -29,6 +30,7 @@ exportButton.addEventListener("click", async function() {
     tempCanvas.width = 1920; tempCanvas.height = 1080;
     ctx.drawImage(exportCanvas.element, 0, 0, 1920, 1080);
 
+    console.log('Drawing everything in the temp canvas');
     await delay(500);
 
     const link = document.createElement("a");
@@ -36,6 +38,7 @@ exportButton.addEventListener("click", async function() {
     link.href = tempCanvas.toDataURL("image/png");
     link.click();
 
+    console.log('Downloading canvas');
     await delay(300);
     drawCanvasGlobal();
 
@@ -44,6 +47,7 @@ exportButton.addEventListener("click", async function() {
         day.setDrawAsCanvas(false)
     });
 
+    console.log('End of button');
     // link.href = exportCanvas.element.toDataURL("image/png");
     // let scaleFactor = 2;
     // exported.element.width = 1920 * scaleFactor;
