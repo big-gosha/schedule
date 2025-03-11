@@ -87,6 +87,9 @@ async function loadAssets() {
 // Proxy Text
 class ProxyText{
     constructor(font = 'Arial', fontColor = 'red', boxWidth = '200', boxHeight = '15', xPos, yPos, placeholderText, id) {
+        this.xPos = xPos;
+        this.yPos = yPos;
+
         this.element = document.createElement("textarea");
         this.element.classList.add('inputText', 'root-child');
         this.element.style.font = font;
@@ -94,7 +97,6 @@ class ProxyText{
         this.element.placeholder = placeholderText;
         this.element.id = id;
 
-        //newRoot.appendChild(element);
         this.element.style.top = `${yAdj(yPos)}px`;
         this.element.style.left = `${xAdj(xPos)}px`;
         this.element.style.width = boxWidth;
@@ -102,17 +104,17 @@ class ProxyText{
     }
 
     drawAsHtml (){
-        this.element.visibility = 'visible';
+        this.element.style.visibility = 'visible';
     }
 
     drawAsCanvas (ctx){
-        this.element.visibility = 'hidden';
-        drawText(this.element.font, 
-            this.element.color, 
-            this.element.style.left, 
-            this.element.style.top, 
-            this.element.style.textAlign, 
-            this.element.style.verticalAlign, 
+        this.element.style.visibility = 'hidden';
+        drawText(this.element.style.font, 
+            this.element.style.color, 
+            this.xPos-12,
+            this.yPos-12,
+            'left',
+            'top',
             this.element.value,
             ctx);
     }
