@@ -64,12 +64,6 @@ function drawRoundRect (xPos, yPos, xSize, ySize, radius, color, ctx){
     ctx.closePath();
 }
 
-// Draw Weekday
-// function drawWeekday(xPos, yPos, day, ctx){
-//     drawRoundRect(xPos, yPos, 54, 14, 8, "rgb(245 226 131 / 70%)", ctx);
-//     drawText('bold 15px Calibri', '#51484b', xPos+60, yPos+11, 'center', 'middle', day, ctx);
-// }
-
 // Draw Input Field
 function createInputField(element, font, color, width, height, placeholder){
     element.classList.add('inputText');
@@ -79,12 +73,6 @@ function createInputField(element, font, color, width, height, placeholder){
     element.style.height = height;
     element.style.width = width;
 }
-
-// Get Date String
-// function getDateString(date, incr){
-//     date.setDate(date.getDate() + incr);
-//     return (date.getDate()).toString().padStart(2, "0");
-// }
 
 // Add To Root
 function addToRoot(element, xPos, yPos, id, newRoot){
