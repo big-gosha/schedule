@@ -11,7 +11,7 @@
 
 <body>
     <div id="root">
-        <canvas id="canvas-export" class="canvas" style="opacity: 0;"></canvas>    
+        <canvas id="canvas-export" class="canvas" style="opacity: 100;"></canvas>    
         <button id="export-button" class="root-child">Export</button>
 
         <div id="transform-tool" class="root-child">
@@ -26,26 +26,6 @@
             </div>
         </div>
     </div>
-
-    <script type="module">
-        import imglyRemoveBackground from "https://cdn.jsdelivr.net/npm/@imgly/background-removal";
-        
-        async function removeBg() {
-            const input = document.getElementById("imageInput");
-            const file = input.files[0];
-            if (!file) return alert("Please select an image");
-      
-            const imageUrl = URL.createObjectURL(file);
-            const resultBlob = await imglyRemoveBackground(imageUrl);
-            const resultUrl = URL.createObjectURL(resultBlob);
-      
-            document.getElementById("output").src = resultUrl;
-        }
-    </script>
-      
-    <input type="file" id="imageInput">
-    <button onclick="removeBg()">Remove Background</button>
-    <img id="output">  
 
     <script src="js/properties.js"></script>
     <script src="js/functions.js"></script>
